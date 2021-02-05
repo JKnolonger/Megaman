@@ -5,17 +5,20 @@ import java.awt.event.KeyEvent;
 
 
 public class InputManager {
-
+private GamePanel gamePanel;
+	public InputManager(GamePanel  gamePanel) {
+		this.gamePanel = gamePanel;
+	}
 	public void processKeyPressed(int keyCode) {
 		switch (keyCode) {
 		case KeyEvent.VK_A:
-			System.out.println("pressed A");
+			gamePanel.megaman.setSpeedX(-5);
 			break;
 		case KeyEvent.VK_S:
 			System.out.println("pressed S");
 			break;
 		case KeyEvent.VK_D:
-			System.out.println("pressed D");
+			gamePanel.megaman.setSpeedX(5);
 			break;
 		case KeyEvent.VK_W:
 			System.out.println("pressed W");

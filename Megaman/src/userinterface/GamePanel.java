@@ -10,18 +10,20 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import gameobject.Megaman;
+
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 
 private	Thread thread;
 private InputManager inputManager;
 private BufferedImage bufferImage;
 private Graphics2D bufG2D;
-  
+Megaman megaman = new Megaman(300, 300, 100, 200, 0.1f);
     public boolean isRunning = true;
 
     public GamePanel(){
       
-        inputManager = new InputManager();
+        inputManager = new InputManager(this);
         bufferImage  = new BufferedImage(GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT, BufferedImage.TYPE_INT_ARGB);
     }
 
@@ -42,7 +44,7 @@ private Graphics2D bufG2D;
 
 
         while(isRunning){
-        	//update
+        	updateGame();
         	renderGame();
         	repaint();
         	long deltaTime = System.nanoTime() - beginTime;
@@ -59,6 +61,9 @@ private Graphics2D bufG2D;
         }
 
     }
+    public void updateGame() {
+    	megaman.update();
+    }
     public void renderGame() {
     	if(bufferImage == null) {
     		bufferImage = new BufferedImage(GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT, BufferedImage.TYPE_INT_ARGB);
@@ -69,8 +74,8 @@ private Graphics2D bufG2D;
     	if(bufG2D != null) {
     		bufG2D.setColor(Color.WHITE);
     		bufG2D.fillRect(0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT);
-    		bufG2D.setColor(Color.BLUE);
-    		bufG2D.fillRect(40, 50, 100, 100);
+    		//draw game object here
+    		megaman.draw(bufG2D);;
     	}
     }
     public void paint(Graphics g){
