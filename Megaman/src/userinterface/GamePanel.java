@@ -10,22 +10,24 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import gameobject.GameWorld;
 import gameobject.Megaman;
 import gameobject.PhysicalMap;
 
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 
 private	Thread thread;
+public boolean isRunning = true;
+
 private InputManager inputManager;
 private BufferedImage bufferImage;
 private Graphics2D bufG2D;
-Megaman megaman = new Megaman(300, 300, 100, 200, 0.1f);
-PhysicalMap physicalMap = new PhysicalMap(0, 0);
-    public boolean isRunning = true;
+GameWorld gameWorld;
 
     public GamePanel(){
       
-        inputManager = new InputManager(this);
+    	gameWorld = new GameWorld();
+        inputManager = new InputManager(gameWorld);
         bufferImage  = new BufferedImage(GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT, BufferedImage.TYPE_INT_ARGB);
     }
 
@@ -64,7 +66,7 @@ PhysicalMap physicalMap = new PhysicalMap(0, 0);
 
     }
     public void updateGame() {
-    	megaman.update();
+    	gameWorld.update();
     }
     public void renderGame() {
     	if(bufferImage == null) {
@@ -78,7 +80,7 @@ PhysicalMap physicalMap = new PhysicalMap(0, 0);
     		bufG2D.fillRect(0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT);
     		//draw game object here
     		//megaman.draw(bufG2D);
-    		physicalMap.draw(bufG2D);
+    		gameWorld.render(bufG2D);
     	}
     }
     public void paint(Graphics g){
