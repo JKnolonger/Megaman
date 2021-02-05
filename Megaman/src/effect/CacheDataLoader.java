@@ -30,7 +30,6 @@ public class CacheDataLoader {
     private Hashtable<String, AudioClip> sounds;
     
     private int[][] phys_map;
-    private int[][] background_map;
     
     private CacheDataLoader() {}
 
@@ -58,19 +57,14 @@ public class CacheDataLoader {
 
     }
     
-    public int[][] getPhysicalMap(){
-        return instance.phys_map;
-    }
     
-    public int[][] getBackgroundMap(){
-        return instance.background_map;
-    }
+   
     
     public void LoadData()throws IOException{
         
         LoadFrame();
         LoadAnimation();
-        //LoadPhysMap();
+        LoadPhysMap();
        // LoadBackgroundMap();
        // LoadSounds();
         
@@ -121,38 +115,9 @@ public class CacheDataLoader {
         
     }
     
-    public void LoadBackgroundMap() throws IOException{
-        
-        FileReader fr = new FileReader(backgroundmapfile);
-        BufferedReader br = new BufferedReader(fr);
-        
-        String line = null;
-        
-        line = br.readLine();
-        int numberOfRows = Integer.parseInt(line);
-        line = br.readLine();
-        int numberOfColumns = Integer.parseInt(line);
-            
-        
-        instance.background_map = new int[numberOfRows][numberOfColumns];
-        
-        for(int i = 0;i < numberOfRows;i++){
-            line = br.readLine();
-            String [] str = line.split(" |  ");
-            for(int j = 0;j<numberOfColumns;j++)
-                instance.background_map[i][j] = Integer.parseInt(str[j]);
-        }
-        
-        for(int i = 0;i < numberOfRows;i++){
-            
-            for(int j = 0;j<numberOfColumns;j++)
-                System.out.print(" "+instance.background_map[i][j]);
-            
-            System.out.println();
-        }
-        
-        br.close();
-        
+  
+    public int[][] getPhysicalMap(){
+    	return instance.phys_map;
     }
     
     public void LoadPhysMap() throws IOException{
@@ -292,11 +257,5 @@ public class CacheDataLoader {
         br.close();
         
     }
-    public static void main(String[] args) {
-    	try {
-			CacheDataLoader.getInstance().LoadData();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+   
 }

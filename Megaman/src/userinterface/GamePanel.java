@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 import gameobject.Megaman;
+import gameobject.PhysicalMap;
 
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 
@@ -19,6 +20,7 @@ private InputManager inputManager;
 private BufferedImage bufferImage;
 private Graphics2D bufG2D;
 Megaman megaman = new Megaman(300, 300, 100, 200, 0.1f);
+PhysicalMap physicalMap = new PhysicalMap(0, 0);
     public boolean isRunning = true;
 
     public GamePanel(){
@@ -75,7 +77,8 @@ Megaman megaman = new Megaman(300, 300, 100, 200, 0.1f);
     		bufG2D.setColor(Color.WHITE);
     		bufG2D.fillRect(0, 0, GameFrame.SCREEN_WIDTH, GameFrame.SCREEN_HEIGHT);
     		//draw game object here
-    		megaman.draw(bufG2D);;
+    		//megaman.draw(bufG2D);
+    		physicalMap.draw(bufG2D);
     	}
     }
     public void paint(Graphics g){
