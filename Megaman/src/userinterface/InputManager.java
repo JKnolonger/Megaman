@@ -3,6 +3,8 @@ package userinterface;
 
 import java.awt.event.KeyEvent;
 
+import gameobject.Megaman;
+
 
 public class InputManager {
 private GamePanel gamePanel;
@@ -31,18 +33,23 @@ private GamePanel gamePanel;
 	public void processKeyReleased(int keyCode) {
 		switch (keyCode) {
 		case KeyEvent.VK_A:
-			System.out.println("released A");
+			gamePanel.megaman.setDirection(Megaman.DIR_LEFT);
+			gamePanel.megaman.setSpeedX(0);
 			break;
 		case KeyEvent.VK_S:
 			System.out.println("released S");
 			break;
 		case KeyEvent.VK_D:
-			System.out.println("released D");
+			gamePanel.megaman.setDirection(Megaman.DIR_LEFT);
+			gamePanel.megaman.setSpeedX(0);
 			break;
 		case KeyEvent.VK_W:
 			System.out.println("released W");
 			break;
-
+		case KeyEvent.VK_SPACE:
+			gamePanel.megaman.setSpeedY(-3);
+			gamePanel.megaman.setPosY(gamePanel.megaman.getPosY()+(-3));
+			break;
 		default:
 			break;
 		}

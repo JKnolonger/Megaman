@@ -33,7 +33,14 @@ public class Megaman {
 	}
 	public void update() {
 		setPosX(posX + speedX);
-		//setPosY(posY + speedY);
+		if(posY >=300) {
+			setPosY(300);
+		}else {
+			setPosY(posY + speedY);
+			setSpeedY(getSpeedY()+mass);
+			
+		}
+		
 	}
 	public float getPosX() {
 		return posX;
