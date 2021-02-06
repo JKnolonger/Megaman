@@ -5,8 +5,9 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public class Megaman {
-
+	//posX duoc cho la tam cua nhan vat, k phai diem ben tren ben trai
 	private float posX;
+	//posY duoc cho la tam cua nhan vat, k phai diem ben tren ben trai
 	private float posY;
 	
 	private float width;
