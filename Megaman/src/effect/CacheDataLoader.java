@@ -66,7 +66,7 @@ public class CacheDataLoader {
         LoadAnimation();
         LoadPhysMap();
        // LoadBackgroundMap();
-       // LoadSounds();
+       LoadSounds();
         
     }
     
@@ -227,7 +227,7 @@ public class CacheDataLoader {
                 while((line = br.readLine()).equals(""));
                 String[] str = line.split(" ");
                 String path = str[1];
-                System.out.println(path);
+                System.out.println("Loading "+path);
                 
                 while((line = br.readLine()).equals(""));
                 str = line.split(" ");

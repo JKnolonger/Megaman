@@ -16,14 +16,14 @@ private GameWorld gameWorld;
 	public void processKeyPressed(int keyCode) {
 		switch (keyCode) {
 		case KeyEvent.VK_A:
-			gameWorld.megaman.setDirection(Megaman.DIR_LEFT);
-			gameWorld.megaman.setSpeedX(-5);
+			gameWorld.megaman.setDirection(gameWorld.megaman.LEFT_DIR);
+			gameWorld.megaman.run();
 			break;
 		case KeyEvent.VK_S:
 			break;
 		case KeyEvent.VK_D:
-			gameWorld.megaman.setDirection(Megaman.DIR_LEFT);
-			gameWorld.megaman.setSpeedX(5);
+			gameWorld.megaman.setDirection(gameWorld.megaman.RIGHT_DIR);
+			gameWorld.megaman.run();
 			break;
 		case KeyEvent.VK_W:
 			System.out.println("pressed W");
