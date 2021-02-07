@@ -1,5 +1,5 @@
 package gameobject;
-
+//doi tuong trong game chia lam 2 loai: nhan vat, quai.... va physicalmap,backgroundmap...
 public abstract class GameObject {
 private float posX;
 private float posY;
