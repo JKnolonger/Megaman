@@ -93,7 +93,7 @@ public class Megaman extends Human {
         }
         
         if(getIsLanding()){
-            landingBackAnim.Update(System.nanoTime());
+            landingBackAnim.update(System.nanoTime());
             if(landingBackAnim.isLastFrame()) {
                 setIsLanding(false);
                 landingBackAnim.reset();
@@ -126,7 +126,7 @@ public class Megaman extends Human {
 
     @Override
     public void draw(Graphics2D g2) {
-        /*
+        
         switch(getState()){
         
             case ALIVE:
@@ -152,14 +152,14 @@ public class Megaman extends Human {
                     }else if(getIsJumping()){
 
                         if(getDirection() == RIGHT_DIR){
-                            flyForwardAnim.Update(System.nanoTime());
+                            flyForwardAnim.update(System.nanoTime());
                             if(isShooting){
                                 flyShootingForwardAnim.setCurrentFrame(flyForwardAnim.getCurrentFrame());
                                 flyShootingForwardAnim.draw((int) (getPosX() - getGameWorld().camera.getPosX()) + 10, (int) getPosY() - (int) getGameWorld().camera.getPosY(), g2);
                             }else
                                 flyForwardAnim.draw((int) (getPosX() - getGameWorld().camera.getPosX()), (int) getPosY() - (int) getGameWorld().camera.getPosY(), g2);
                         }else{
-                            flyBackAnim.Update(System.nanoTime());
+                            flyBackAnim.update(System.nanoTime());
                             if(isShooting){
                                 flyShootingBackAnim.setCurrentFrame(flyBackAnim.getCurrentFrame());
                                 flyShootingBackAnim.draw((int) (getPosX() - getGameWorld().camera.getPosX()) - 10, (int) getPosY() - (int) getGameWorld().camera.getPosY(), g2);
@@ -170,12 +170,12 @@ public class Megaman extends Human {
                     }else if(getIsDicking()){
 
                         if(getDirection() == RIGHT_DIR){
-                            dickForwardAnim.Update(System.nanoTime());
+                            dickForwardAnim.update(System.nanoTime());
                             dickForwardAnim.draw((int) (getPosX() - getGameWorld().camera.getPosX()), 
                                     (int) getPosY() - (int) getGameWorld().camera.getPosY() + (getBoundForCollisionWithMap().height/2 - dickForwardAnim.getCurrentImage().getHeight()/2),
                                     g2);
                         }else{
-                            dickBackAnim.Update(System.nanoTime());
+                            dickBackAnim.update(System.nanoTime());
                             dickBackAnim.draw((int) (getPosX() - getGameWorld().camera.getPosX()), 
                                     (int) getPosY() - (int) getGameWorld().camera.getPosY() + (getBoundForCollisionWithMap().height/2 - dickBackAnim.getCurrentImage().getHeight()/2),
                                     g2);
@@ -183,7 +183,7 @@ public class Megaman extends Human {
 
                     }else{
                         if(getSpeedX() > 0){
-                            runForwardAnim.Update(System.nanoTime());
+                            runForwardAnim.update(System.nanoTime());
                             if(isShooting){
                                 runShootingForwarAnim.setCurrentFrame(runForwardAnim.getCurrentFrame() - 1);
                                 runShootingForwarAnim.draw((int) (getPosX() - getGameWorld().camera.getPosX()), (int) getPosY() - (int) getGameWorld().camera.getPosY(), g2);
@@ -191,7 +191,7 @@ public class Megaman extends Human {
                                 runForwardAnim.draw((int) (getPosX() - getGameWorld().camera.getPosX()), (int) getPosY() - (int) getGameWorld().camera.getPosY(), g2);
                             if(runForwardAnim.getCurrentFrame() == 1) runForwardAnim.setIgnoreFrame(0);
                         }else if(getSpeedX() < 0){
-                            runBackAnim.Update(System.nanoTime());
+                            runBackAnim.update(System.nanoTime());
                             if(isShooting){
                                 runShootingBackAnim.setCurrentFrame(runBackAnim.getCurrentFrame() - 1);
                                 runShootingBackAnim.draw((int) (getPosX() - getGameWorld().camera.getPosX()), (int) getPosY() - (int) getGameWorld().camera.getPosY(), g2);
@@ -201,18 +201,18 @@ public class Megaman extends Human {
                         }else{
                             if(getDirection() == RIGHT_DIR){
                                 if(isShooting){
-                                    idleShootingForwardAnim.Update(System.nanoTime());
+                                    idleShootingForwardAnim.update(System.nanoTime());
                                     idleShootingForwardAnim.draw((int) (getPosX() - getGameWorld().camera.getPosX()), (int) getPosY() - (int) getGameWorld().camera.getPosY(), g2);
                                 }else{
-                                    idleForwardAnim.Update(System.nanoTime());
+                                    idleForwardAnim.update(System.nanoTime());
                                     idleForwardAnim.draw((int) (getPosX() - getGameWorld().camera.getPosX()), (int) getPosY() - (int) getGameWorld().camera.getPosY(), g2);
                                 }
                             }else{
                                 if(isShooting){
-                                    idleShootingBackAnim.Update(System.nanoTime());
+                                    idleShootingBackAnim.update(System.nanoTime());
                                     idleShootingBackAnim.draw((int) (getPosX() - getGameWorld().camera.getPosX()), (int) getPosY() - (int) getGameWorld().camera.getPosY(), g2);
                                 }else{
-                                    idleBackAnim.Update(System.nanoTime());
+                                    idleBackAnim.update(System.nanoTime());
                                     idleBackAnim.draw((int) (getPosX() - getGameWorld().camera.getPosX()), (int) getPosY() - (int) getGameWorld().camera.getPosY(), g2);
                                 }
                             }
@@ -237,7 +237,6 @@ public class Megaman extends Human {
 
         }
         
-         */
     	drawBoundForCollisionWithEnemy(g2);
     	drawBoundForCollisionWithMap(g2);
     }
@@ -307,7 +306,7 @@ public class Megaman extends Human {
 
     @Override
     public void attack() {
-    /*
+    
         if(!isShooting && !getIsDicking()){
             
             //shooting1.play();
@@ -339,7 +338,7 @@ public class Megaman extends Human {
             
         }
     
-     */
+   
     }
     @Override
     public void hurtingCallback(){

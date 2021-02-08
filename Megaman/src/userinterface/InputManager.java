@@ -29,9 +29,10 @@ private GameWorld gameWorld;
 			System.out.println("pressed W");
 			break;
 		case KeyEvent.VK_SPACE:
-			gameWorld.megaman.setSpeedY(-3);
-			gameWorld.megaman.setPosY(gameWorld.megaman.getPosY()+(-3));
+			gameWorld.megaman.jump();
 			break;
+		case KeyEvent.VK_SHIFT:
+			gameWorld.megaman.attack();
 		default:
 			break;
 		}
@@ -39,13 +40,15 @@ private GameWorld gameWorld;
 	public void processKeyReleased(int keyCode) {
 		switch (keyCode) {
 		case KeyEvent.VK_A:
-			gameWorld.megaman.setSpeedX(0);
+			if(gameWorld.megaman.getSpeedX()<0)
+				gameWorld.megaman.stopRun();
 			break;
 		case KeyEvent.VK_S:
 			System.out.println("released S");
 			break;
 		case KeyEvent.VK_D:
-			gameWorld.megaman.setSpeedX(0);
+			if(gameWorld.megaman.getSpeedX()>0)
+				gameWorld.megaman.stopRun();
 			break;
 		case KeyEvent.VK_W:
 			System.out.println("released W");

@@ -148,14 +148,16 @@ public abstract class ParticularObject extends GameObject {
     public abstract void attack();
     
     
-	/*
-	 * public boolean isObjectOutOfCameraView(){ if(getPosX() -
-	 * getGameWorld().camera.getPosX() > getGameWorld().camera.getWidthView() ||
-	 * getPosX() - getGameWorld().camera.getPosX() < -50 ||getPosY() -
-	 * getGameWorld().camera.getPosY() > getGameWorld().camera.getHeightView()
-	 * ||getPosY() - getGameWorld().camera.getPosY() < -50) return true; else return
-	 * false; }
-	 */
+	
+	public boolean isObjectOutOfCameraView() {
+		if (getPosX() - getGameWorld().camera.getPosX() > getGameWorld().camera.getWidthView()
+				|| getPosX() - getGameWorld().camera.getPosX() < -50
+				|| getPosY() - getGameWorld().camera.getPosY() > getGameWorld().camera.getHeightView()
+				|| getPosY() - getGameWorld().camera.getPosY() < -50)
+			return true;
+		else
+			return false;
+	}
     
     public Rectangle getBoundForCollisionWithMap(){
         Rectangle bound = new Rectangle();
@@ -207,7 +209,7 @@ public abstract class ParticularObject extends GameObject {
                             state = FEY;
                     
                 } else {
-                    behurtForwardAnim.Update(System.nanoTime());
+                    behurtForwardAnim.update(System.nanoTime());
                     if(behurtForwardAnim.isLastFrame()){
                         behurtForwardAnim.reset();
                         state = NOBEHURT;

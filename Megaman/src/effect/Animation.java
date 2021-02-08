@@ -119,7 +119,7 @@ public class Animation {
         return frameImages.get(currentFrame).getImage();
     }
     
-    public void Update(long deltaTime){
+    public void update(long deltaTime){
         
         if(beginTime == 0) beginTime = deltaTime;
         else{
